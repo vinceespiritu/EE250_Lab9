@@ -6,3 +6,15 @@ Answer: We are using HTTP Basic Authentication here. We prove our identity by pr
 		Public-private key pairs are used for Integrity and Confidentiality. Public key is known and used by other people to communicate to yourself. On the other hand, Private key is only known to yourself. 
 
 		A node sending a message to another can sign the message (m) by hashing the message (h(m)) and encrypting it using its private key and encrypt the whole message for confidentiality using the receiver's public key. The sender will send Erpub[(m, Espvt[h(m)])]. On the receiving end, the receiving node can open the message and verify the sender's identity by first decrypting the whole message using the its own private key, then hashing the message (h'(m)) to compare with the encrypted hashed message h(m). To decrypt the received hashed message, the receiver must use the sender's public key. if h'(m) == h(m), then the sender's identity has been verified.
+
+Question 2:  Here we created a pair of asymmetric keys. What are their names? Which one is the public key and which one is the private key?
+Answer:
+			Public key : server-cert.pem
+			Private key: server-key.pem
+
+Question 3:  What is a certificate authority (CA) for public keys? What kind of attack can a CA prevent?
+Answer: Certificate authority for public keys provide digital certificates to different entities such as websites, emails, addresses, companies, or individual persons. The digital certificate provides 		 authentication of the website. CA will not issue a digital certificate to an imposter. CA prevents users to communicate confidential data to a malicious entity.
+		
+		Once a connection request is made to a website, the website will send the digital certificate with its public key, company name, and domain name to the the client. The client will verify the website's identity by decrypting the digital certicate using the CA public key. If the digital certificate is correctly decrypted, the client trusts CA thus confirms and trusts the identity of the website. The client can now send an encrypted message to this trusted website using its public key.
+
+Question 4: 
