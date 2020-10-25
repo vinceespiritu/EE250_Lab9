@@ -1,0 +1,8 @@
+{Name: Vince Espiritu, USCID: 1472908880, Email:vespirit@usc.edu}
+{Name: Matt Baseheart, USCID: 5992473415, Email:mattbasehear@usc.edu}
+
+Question 1:  What type of authentication are we using here? Both TLS and crypto authentication use public-private key pairs, what’s the difference?
+Answer: We are using HTTP Basic Authentication here. We prove our identity by providing our username and password that is assumed that I am the only person who knows it.
+		Public-private key pairs are used for Integrity and Confidentiality. Public key is known and used by other people to communicate to yourself. On the other hand, Private key is only known to yourself. 
+
+		A node sending a message to another can sign the message (m) by hashing the message (h(m)) and encrypting it using its private key and encrypt the whole message for confidentiality using the receiver's public key. The sender will send Erpub[(m, Espvt[h(m)])]. On the receiving end, the receiving node can open the message and verify the sender's identity by first decrypting the whole message using the its own private key, then hashing the message (h'(m)) to compare with the encrypted hashed message h(m). To decrypt the received hashed message, the receiver must use the sender's public key. if h'(m) == h(m), then the sender's identity has been verified.
